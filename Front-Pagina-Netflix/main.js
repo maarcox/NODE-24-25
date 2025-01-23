@@ -1,7 +1,7 @@
 let urlObtenerListaPokemon = 'https://pokeapi.co/api/v2/pokemon/';
 
 function cargarPokemons(){
-    alert("LLego a la funcion JAVASCRIPT")
+    alert("LLegó a la función Pokemons")
     // Llamamos a la API de pokemon con Fetch
     fetch(urlObtenerListaPokemon)
         .then(res=>res.json())
@@ -13,19 +13,35 @@ function cargarPokemons(){
 }
 
 function cargarPeliculas(){
-    alert("LLego a la funcion Peliculas")
+    alert("LLegó a la función Peliculas")
     fetch("http://127.0.0.1:3000/peliculas")
     .then(res=>res.json())
     .then(res=>{
         console.log(res)
-        
-    
     });
 }
 
 function cargarPeliculasDrama(){
-    alert("Boton peliculas pulsado")
+    alert("Botón películas Drama pulsado")
     fetch("http://127.0.0.1:3000/peliculas/genero/Drama")
+    .then(res=>res.json())
+    .then(res=>{
+        console.log(res)
+    });
+}
+
+function cargarPeliculasComedia(){
+    alert("Botón películas Comedia pulsado")
+    fetch("http://127.0.0.1:3000/peliculas/genero/Comedia")
+    .then(res=>res.json())
+    .then(res=>{
+        console.log(res)
+    });
+}
+
+function cargarPeliculasAccion(){
+    alert("Botón películas Accion pulsado")
+    fetch("http://127.0.0.1:3000/peliculas/genero/Accion")
     .then(res=>res.json())
     .then(res=>{
         console.log(res)
