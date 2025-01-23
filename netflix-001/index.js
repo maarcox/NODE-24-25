@@ -5,10 +5,13 @@
 // IMPORTS EN JAVA
 const express = require("express"); // API REST -> NODE JS CON EXPRESS
 const { Pool } = require("pg");      // HABLAR BD PG DE AWS
-
+const cors = require("cors");
 // INSTANCIAR LOS OBJETOS QUE NECESITAMOS
 const app = express();
 const port = 3000;
+
+app.use(cors());
+app.use(express.json());
 // Configuración de la base de datos
 const pool = new Pool({
     user: "postgres",
