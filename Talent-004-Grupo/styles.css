@@ -13,14 +13,14 @@ body {
 h1 {
     margin-top: 20px;
     font-size: 3rem;
-    color: #e74c3c;
+    color: #f3786a;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .filters {
     margin: 20px;
     padding: 20px;
-    background-color: rgba(52, 152, 219, 0.8); /* Un color más fresco */
+    background-color: rgba(52, 152, 219, 0.452); /* Un color más fresco */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     display: flex;
