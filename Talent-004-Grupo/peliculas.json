@@ -6,7 +6,7 @@
     { "titulo": "Toy Story", "genero": "Animación", "año": 1995, "imagen": "https://m.media-amazon.com/images/M/MV5BZTA3OWVjOWItNjE1NS00NzZiLWE1MjgtZDZhMWI1ZTlkNzYwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
     { "titulo": "La La Land", "genero": "Romance", "año": 2016, "imagen": "https://pics.filmaffinity.com/La_ciudad_de_las_estrellas_La_La_Land-262021831-large.jpg" },
     { "titulo": "Interstellar", "genero": "Ciencia Ficción", "año": 2014, "imagen": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
-    { "titulo": "Spider-Man: No Way Home", "genero": "Acción", "año": 2021, "imagen": "https://img.ecartelera.com/noticias/fotos/70100/70190/1.jpg" },
+    { "titulo": "Spider Man: No Way Home", "genero": "Acción", "año": 2021, "imagen": "https://img.ecartelera.com/noticias/fotos/70100/70190/1.jpg" },
     { "titulo": "Frozen", "genero": "Animación", "año": 2013, "imagen": "https://m.media-amazon.com/images/I/91PPqVEVQ7L._AC_UF894,1000_QL80_.jpg" },
     { "titulo": "Shrek", "genero": "Animación", "año": 2001, "imagen": "https://m.media-amazon.com/images/M/MV5BN2FkMTRkNTUtYTI0NC00ZjI4LWI5MzUtMDFmOGY0NmU2OGY1XkEyXkFqcGc@._V1_.jpg" },
     { "titulo": "The Notebook", "genero": "Romance", "año": 2004, "imagen": "https://m.media-amazon.com/images/M/MV5BZjE0ZjgzMzYtMTAxYi00NGMzLThmZDktNzFlMzA2MWRmYWQ0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
