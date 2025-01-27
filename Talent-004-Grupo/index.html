@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARTELERA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>CARTELERA SAN VALERO</h1>
+
+    <div class="filters">
+        <label for="genero-select">Filtrar por Género:</label>
+        <select id="genero-select">
+            <option value="">--Seleccionar--</option>
+            <option value="Animación">Animación</option>
+            <option value="Ciencia Ficción">Ciencia Ficción</option>
+            <option value="Romance">Romance</option>
+            <option value="Acción">Acción</option>
+            <option value="Drama">Drama</option>
+            <option value="Comedia">Comedia</option>
+        </select>
+
+        <button id="ordenar-asc">Ordenar por Año Ascendente</button>
+        <button id="ordenar-desc">Ordenar por Año Descendente</button>
+
+        <input type="text" id="buscar-titulo" placeholder="Buscar por título">
+        <button id="buscar-btn">Buscar</button>
+    </div>
+
+    <div id="mensaje" class="mensaje"></div>
+
+    <ul id="peliculas-lista"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+[
+    { "titulo": "El Rey León", "genero": "Animación", "año": 1994, "imagen": "https://lumiere-a.akamaihd.net/v1/images/image_8b5ca578.jpeg?region=0,0,540,810" },
+    { "titulo": "Matrix", "genero": "Ciencia Ficción", "año": 1999, "imagen": "https://pics.filmaffinity.com/Matrix-155050517-mmed.jpg" },
+    { "titulo": "Titanic", "genero": "Romance", "año": 1997, "imagen": "https://pics.filmaffinity.com/Titanic-321994924-mmed.jpg" },
+    { "titulo": "Avengers: Endgame", "genero": "Acción", "año": 2019, "imagen": "https://m.media-amazon.com/images/S/pv-target-images/07f01ebf958b97063321b094836cfa79688f9e53eb9c25359e1e5826194f9440.jpg" },
+    { "titulo": "Toy Story", "genero": "Animación", "año": 1995, "imagen": "https://m.media-amazon.com/images/M/MV5BZTA3OWVjOWItNjE1NS00NzZiLWE1MjgtZDZhMWI1ZTlkNzYwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "La La Land", "genero": "Romance", "año": 2016, "imagen": "https://pics.filmaffinity.com/La_ciudad_de_las_estrellas_La_La_Land-262021831-large.jpg" },
+    { "titulo": "Interstellar", "genero": "Ciencia Ficción", "año": 2014, "imagen": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "Spider-Man: No Way Home", "genero": "Acción", "año": 2021, "imagen": "https://img.ecartelera.com/noticias/fotos/70100/70190/1.jpg" },
+    { "titulo": "Frozen", "genero": "Animación", "año": 2013, "imagen": "https://m.media-amazon.com/images/I/91PPqVEVQ7L._AC_UF894,1000_QL80_.jpg" },
+    { "titulo": "Shrek", "genero": "Animación", "año": 2001, "imagen": "https://m.media-amazon.com/images/M/MV5BN2FkMTRkNTUtYTI0NC00ZjI4LWI5MzUtMDFmOGY0NmU2OGY1XkEyXkFqcGc@._V1_.jpg" },
+    { "titulo": "The Notebook", "genero": "Romance", "año": 2004, "imagen": "https://m.media-amazon.com/images/M/MV5BZjE0ZjgzMzYtMTAxYi00NGMzLThmZDktNzFlMzA2MWRmYWQ0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "Mission: Impossible – Fallout", "genero": "Acción", "año": 2018, "imagen": "https://m.media-amazon.com/images/I/91EtQD0P0dL._AC_UF894,1000_QL80_.jpg" },
+    { "titulo": "Monsters, Inc.", "genero": "Animación", "año": 2001, "imagen": "https://lumiere-a.akamaihd.net/v1/images/p_monstersinc_19751_55afa07a.jpeg" },
+    { "titulo": "Inception", "genero": "Ciencia Ficción", "año": 2010, "imagen": "https://m.media-amazon.com/images/I/912AErFSBHL._AC_UF894,1000_QL80_.jpg" },
+    { "titulo": "The Dark Knight", "genero": "Acción", "año": 2008, "imagen": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "Gladiator", "genero": "Acción", "año": 2000, "imagen": "https://pics.filmaffinity.com/Gladiator_II-808387712-mmed.jpg" },
+    { "titulo": "Forrest Gump", "genero": "Drama", "año": 1994, "imagen": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "Avatar", "genero": "Ciencia Ficción", "año": 2009, "imagen": "https://m.media-amazon.com/images/M/MV5BNmQxNjZlZTctMWJiMC00NGMxLWJjNTctNTFiNjA1Njk3ZDQ5XkEyXkFqcGc@._V1_.jpg" },
+    { "titulo": "Stranger Things", "genero": "Ciencia Ficción", "año": 2016, "imagen": "https://laestanteriadelcaos.com/wp-content/uploads/2023/02/mv5bmjezmdaxotuymv5bml5banbnxkftztgwnzaxmzyzote40._v1_.jpg" },
+    { "titulo": "Red Notice", "genero": "Acción", "año": 2021, "imagen": "https://pics.filmaffinity.com/Alerta_roja-593829127-large.jpg" },
+    { "titulo": "Enola Holmes", "genero": "Aventura", "año": 2020, "imagen": "https://www.lavanguardia.com/peliculas-series/images/movie/poster/2022/11/w1280/lCEwpKz5SqyZEADsEgkCvbactCS.jpg" },
+    { "titulo": "To All the Boys I've Loved Before", "genero": "Romance", "año": 2018, "imagen": "https://m.media-amazon.com/images/I/71KRISpGfZL._AC_UF1000,1000_QL80_.jpg" },
+    { "titulo": "Mar adentro", "genero": "Drama", "año": 2004, "imagen": "https://pics.filmaffinity.com/Mar_adentro-201709363-large.jpg" },
+    { "titulo": "Ocho apellidos vascos", "genero": "Comedia", "año": 2014, "imagen": "https://pics.filmaffinity.com/Ocho_apellidos_vascos-836127633-large.jpg" },
+    { "titulo": "La casa de papel", "genero": "Acción", "año": 2017, "imagen": "https://www.lavanguardia.com/peliculas-series/images/serie/poster/2017/5/w1280/z01Dc0Ly2GmCpLe6Scx4d3dPP1S.jpg" }
+]
+
