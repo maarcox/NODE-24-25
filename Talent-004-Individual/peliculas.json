@@ -1,7 +1,0 @@
-[
-    { "titulo": "El Rey León", "genero": "Animación", "año": 1994, "imagen": "https://lumiere-a.akamaihd.net/v1/images/image_8b5ca578.jpeg?region=0,0,540,810" },
-    { "titulo": "Matrix", "genero": "Ciencia Ficción", "año": 1999, "imagen": "https://m.media-amazon.com/images/I/613ypTLZHsL._AC_UF1000,1000_QL80_.jpg" },
-    { "titulo": "Titanic", "genero": "Romance", "año": 1997, "imagen": "https://pics.filmaffinity.com/Titanic-321994924-mmed.jpg" },
-    { "titulo": "Avengers: Endgame", "genero": "Acción", "año": 2019, "imagen": "https://i.ebayimg.com/images/g/GM4AAOSwtvpa8aE3/s-l400.jpg" },
-    { "titulo": "Toy Story", "genero": "Animación", "año": 1995, "imagen": "https://m.media-amazon.com/images/M/MV5BZTA3OWVjOWItNjE1NS00NzZiLWE1MjgtZDZhMWI1ZTlkNzYwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" }
-]
