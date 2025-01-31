@@ -11,9 +11,9 @@ app.use(express.json());
 // Configuración de la base de datos
 const pool = new Pool({
     user: "postgres",
-    host: "disney.c140s0es0k6p.us-east-1.rds.amazonaws.com",
+    host: "netflix-01.cj6qyww46nmx.us-east-1.rds.amazonaws.com",
     database: "postgres",
-    password: "afm12345", // Considera usar variables de entorno para gestionar contraseñas
+    password: "12345678", // Considera usar variables de entorno para gestionar contraseñas
     port: 5432,
     ssl: {
       rejectUnauthorized: false, // Cambia a false si tienes problemas de certificados pero trata de evitarlo por seguridad
