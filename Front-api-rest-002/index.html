@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
-    <script src='main.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney+</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> PELICULAS DESD EMI BASE DE DATOS AWS</h1>
-    <input type="button" onclick="getPeliculas();" value="Traer peliculas">
+    <header>
+        
+        <button id="home-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Disney_Plus_logo.svg/589px-Disney_Plus_logo.svg.png" alt="Disney+" class="logo">
+        </button>
+        
+        <nav>
+            <ul class="genres">
+                <li><button onclick="filterByGenre('Animación')">Animación</button></li>
+                <li><button onclick="filterByGenre('Comedia')">Comedia</button></li>
+                <li><button onclick="filterByGenre('Acción')">Acción</button></li>
+                <li><button onclick="filterByGenre('Terror')">Terror</button></li>
+                <li><button onclick="filterByGenre('Fantasía')">Fantasía</button></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" id="search" placeholder=" Buscar películas..." onkeyup="searchMovies()">
+        </div>
+    </header>
+    
+    <main>
+        <div class="categories">
+            <button onclick="filterByCategory('Disney')"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/5EGT4P4UKRGAZPDR52FKJJW4YU.png" alt="Disney"></button>
+            <button onclick="filterByCategory('Pixar')"><img src="https://cdn.textstudio.com/output/preset/preview/medium/5/7/2/1/1275_cfe47.png" alt="Pixar"></button>
+            <button onclick="filterByCategory('Star Wars')"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png" alt="Star Wars"></button>
+            <button onclick="filterByCategory('Marvel')"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" alt="Marvel"></button>
+        </div>
+        <div id="movies-container"></div>
+    </main>
+    
+    <script src="main.js"></script>
 </body>
 </html>

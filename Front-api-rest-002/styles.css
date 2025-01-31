@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #141414;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#home-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#home-btn:hover {
+    transform: scale(1.1);
+}
+
+.logo {
+    width: 180px;
+    transition: filter 0.3s ease-in-out;
+}
+
+#home-btn:hover .logo {
+    filter: brightness(1.2);
+}
+
+.genres {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+}
+
+.genres button {
+    background-color: #1f1f1f;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.genres button:hover {
+    background-color: #333;
+    transform: scale(1.1);
+}
+
+/* Estilizado del buscador */
+.search-container {
+    margin-top: 15px;
+    position: relative;
+    width: 50%;
+}
+
+#search {
+    width: 90%;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background-color: #444444;
+    color: white;
+    padding-left: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-container::before {
+    content: "🔍";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+    font-size: 20px;
+}
+
+#search:focus {
+    background-color: #333;
+    color: white;
+}
+
+/* Mejora de las categorías */
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.categories button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Tamaño aumentado y estilizado */
+.categories img {
+    width: 140px; /* Tamaño más grande */
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efecto hover profesional */
+.categories img:hover {
+    transform: scale(1.2); /* Aumenta el tamaño */
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3); /* Brillo sutil */
+    filter: brightness(1.1); /* Ligero brillo */
+}
+
+#movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+.movie {
+    background-color: #222;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    width: 220px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie:hover {
+    transform: scale(1.05);
+}
+
+.movie img {
+    width: 100%;
+    border-radius: 8px;
+}

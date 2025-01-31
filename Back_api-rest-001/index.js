@@ -1,15 +1,19 @@
+// IMPORTS EN JAVA
 const express = require("express"); // API REST -> NODE JS CON EXPRESS
 const { Pool } = require("pg");      // HABLAR BD PG DE AWS
-
+const cors = require("cors");
 // INSTANCIAR LOS OBJETOS QUE NECESITAMOS
 const app = express();
 const port = 3000;
+
+app.use(cors());
+app.use(express.json());
 // Configuración de la base de datos
 const pool = new Pool({
     user: "postgres",
-    host: "netflix-01.cj6qyww46nmx.us-east-1.rds.amazonaws.com",
+    host: "disney.c140s0es0k6p.us-east-1.rds.amazonaws.com",
     database: "postgres",
-    password: "12345678", // Considera usar variables de entorno para gestionar contraseñas
+    password: "afm12345", // Considera usar variables de entorno para gestionar contraseñas
     port: 5432,
     ssl: {
       rejectUnauthorized: false, // Cambia a false si tienes problemas de certificados pero trata de evitarlo por seguridad
@@ -18,13 +22,68 @@ const pool = new Pool({
       // Comprueba la documentación de AWS RDS para obtener los detalles exactos.
     },
   });
+// Endpoint para obtener las películas por género con el parámetro en la ruta
   app.get("/peliculas", async (req, res)=>{
     const {rows} = await pool.query(
-        "SELECT * FROM peliculas1;"
+        "SELECT * FROM peliculas;"
     );
     res.json(rows);
     // res.send("Bienvenido a mi API DISNEY");
 });
+
+
+app.get("/peliculas/genero/:genero", async (req, res) => {
+    const { genero } = req.params;
+
+
+    // 📌 Consulta SQL corregida
+    let query = `
+        SELECT p.id, p.titulo, p.anio, g.titulo AS genero, p.imagen_url
+        FROM peliculas p
+        JOIN genero g ON p.genero_id = g.id
+        WHERE g.titulo ILIKE $1
+    `;
+
+    const values = ['%' + genero + '%']; // 🔥 Forma correcta de pasar el parámetro en Node.js
+
+    console.log("🛠 Consulta SQL:", query);
+    console.log("📌 Valores:", values);
+
+    try {
+        const { rows } = await pool.query(query, values);
+
+        if (rows.length === 0) {
+            console.log("❌ No se encontraron películas para este género.");
+            return res.status(404).json({ error: "No se encontraron películas para este género." });
+        }
+
+        console.log("✅ Películas encontradas:", rows);
+        res.json(rows);
+    } catch (err) {
+        console.error("🚨 Error en la consulta SQL:", err);
+        res.status(500).json({ error: "Error al obtener las películas por género." });
+    }
+});
+
+// ✅ **Endpoint para obtener películas por categoría**
+app.get("/peliculas/categoria/:categoria", async (req, res) => {
+    const { categoria } = req.params;
+
+    try {
+        const { rows } = await pool.query(
+            `SELECT p.id, p.titulo, p.anio, c.nombre AS categoria, p.imagen_url
+             FROM peliculas p
+             JOIN categoria c ON p.categoria_id = c.id
+             WHERE c.nombre ILIKE $1;`,
+            ['%' + categoria + '%']
+        );
+
+        res.json(rows);
+    } catch (err) {
+        res.status(500).json({ error: "Error al obtener las películas por categoría." });
+    }
+});
+
     
 
     // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
@@ -39,10 +98,15 @@ const pool = new Pool({
         res.send(`El ID del usuario es: ${userId}`);
     });
 
+    
+
     // ----
     app.listen(port, () => {
         console.log(`Servidor corriendo en http://localhost:${port}`);
       });
+
+    
+      
     // LOGIN, PELÍCULAS POR CATEGORÍAS
         // ADD -> INSERT
         //     app.post("/usuarios/", (req, res)); 
