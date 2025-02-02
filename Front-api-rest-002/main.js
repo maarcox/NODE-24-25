@@ -50,3 +50,43 @@ function filterByCategory(category) {
 document.getElementById("home-btn").addEventListener("click", () => {
     fetchMovies(); // Carga todas las películas
 });
+
+
+
+//caRRUSEL
+
+
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+const carousel = document.querySelector(".carousel");
+
+function showSlide(index) {
+    slideIndex = index;
+    const offset = -index * 100;  // 🔥 Mueve el carrusel en lugar de ocultar imágenes
+    carousel.style.transform = `translateX(${offset}%)`;
+    
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+}
+
+function moveSlide(step) {
+    slideIndex += step;
+    if (slideIndex >= slides.length) slideIndex = 0;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    showSlide(slideIndex);
+}
+
+function currentSlide(index) {
+    showSlide(index);
+}
+
+function autoPlay() {
+    moveSlide(1);
+    setTimeout(autoPlay, 4000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    showSlide(slideIndex);
+    setTimeout(autoPlay, 4000);
+});

@@ -8,7 +8,6 @@
 </head>
 <body>
     <header>
-        
         <button id="home-btn">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Disney_Plus_logo.svg/589px-Disney_Plus_logo.svg.png" alt="Disney+" class="logo">
         </button>
@@ -28,6 +27,27 @@
     </header>
     
     <main>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="slide active">
+                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/11E1ECE75BB1330A7A10C1363F9FCBEFCA631C1B69092BBE820C7FD1F9CB333F/scale?width=1200&aspectRatio=1.78&format=webp" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="https://images.thedirect.com/media/article_full/swchange.jpg" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="https://images.thedirect.com/media/article_full/avengers-disney-plus_7AplG6S.jpg" alt="Slide 3">
+                </div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+        
         <div class="categories">
             <button onclick="filterByCategory('Disney')"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/5EGT4P4UKRGAZPDR52FKJJW4YU.png" alt="Disney"></button>
             <button onclick="filterByCategory('Pixar')"><img src="https://cdn.textstudio.com/output/preset/preview/medium/5/7/2/1/1275_cfe47.png" alt="Pixar"></button>
@@ -38,5 +58,20 @@
     </main>
     
     <script src="main.js"></script>
+    <script>
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); 
+        }
+        document.addEventListener("DOMContentLoaded", showSlides);
+    </script>
 </body>
 </html>
+
