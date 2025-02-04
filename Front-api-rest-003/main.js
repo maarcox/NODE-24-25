@@ -50,7 +50,10 @@ function displayMovies(movies) {
                 <h3>${movie.titulo}</h3>
                 <p>Año: ${movie.anio}</p>
                 <p>Género: ${movie.genero}</p>
-                <button class="play-btn" onclick="playTrailer('${movie.trailer_url}')">▶ Reproducir</button>
+                  <button class="play-btn" 
+                    onclick="playTrailer('${movie.trailer_url}', '${movie.titulo}', '${movie.genero}', '${movie.anio}', '${movie.imagen_url}')">
+                    ▶ Ver Tráiler
+                </button>
                 <button class="fav-btn" onclick="${isFavorite ? `removeFromFavorites(${movie.id})` : `addToFavorites(${movie.id})`}">
                     ${isFavorite ? "❌ Quitar de Favoritos" : "❤️ Añadir a Favoritos"}
                 </button>
@@ -105,17 +108,46 @@ function removeFromFavorites(pelicula_id) {
 
 
 
-function playTrailer(trailerUrl) {
+function playTrailer(trailerUrl, titulo, genero, anio, imagenUrl) {
+    if (!trailerUrl || trailerUrl === "null") {
+        alert("No hay tráiler disponible para esta película.");
+        return;
+    }
+
+    // Elimina cualquier modal previo
+    const existingModal = document.querySelector(".modal");
+    if (existingModal) existingModal.remove();
+
+    // Crear el modal con la nueva estructura
     const modal = document.createElement("div");
     modal.classList.add("modal");
     modal.innerHTML = `
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <iframe width="100%" height="400px" src="${trailerUrl}" frameborder="0" allowfullscreen></iframe>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img src="${imagenUrl}" class="modal-img" alt="${titulo}">
+                </div>
+                <div class="modal-right">
+                    <div class="modal-info">
+                        <h2>${titulo}</h2>
+                        <p><strong>Género:</strong> ${genero || "Desconocido"}</p>
+                        <p><strong>Año:</strong> ${anio}</p>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="${trailerUrl}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
     `;
+
+    // Agregar el modal al body
     document.body.appendChild(modal);
 }
+
+
+
 function closeModal() {
     document.querySelector(".modal").remove();
 }

@@ -161,13 +161,21 @@ app.delete("/favoritos", async (req, res) => {
 
 
 // Endpoint para obtener las películas por género con el parámetro en la ruta
-  app.get("/peliculas", async (req, res)=>{
-    const {rows} = await pool.query(
-        "SELECT * FROM peliculas;"
-    );
-    res.json(rows);
-    // res.send("Bienvenido a mi API DISNEY");
+app.get("/peliculas", async (req, res) => {
+    try {
+        const { rows } = await pool.query(`
+            SELECT p.id, p.titulo, p.descripcion, p.anio, 
+                   g.titulo AS genero, p.imagen_url, p.trailer_url
+            FROM peliculas p
+            JOIN genero g ON p.genero_id = g.id;
+        `);
+        res.json(rows);
+    } catch (error) {
+        console.error("Error en la consulta de películas:", error);
+        res.status(500).json({ error: "Error al obtener las películas" });
+    }
 });
+
 
 app.get("/peliculas/trailers", async (req, res) => {
     const {rows} = await pool.query(
