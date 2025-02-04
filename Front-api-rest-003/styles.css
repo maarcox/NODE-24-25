@@ -6,13 +6,21 @@ body {
     padding: 0;
 }
 
+/* Ajuste del encabezado */
 header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    padding: 10px;
+    
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    z-index: 1000;
 }
 
+/* Logo en la esquina izquierda con efecto hover */
 #home-btn {
     background: none;
     border: none;
@@ -25,65 +33,95 @@ header {
 }
 
 .logo {
-    width: 150px;
+    width: 120px;
     transition: filter 0.3s ease-in-out;
 }
 
 #home-btn:hover .logo {
-    filter: brightness(1.2);
+    filter: brightness(1.5);
+}
+
+/* Contenedor de categorías centradas */
+.nav-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .genres {
-    list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    list-style: none;
     padding: 0;
 }
 
+/* Estilo de los botones de género */
 .genres button {
     background-color: #1f1f1f;
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
     transition: background 0.3s, transform 0.2s;
 }
 
+/* Efecto hover en los géneros */
 .genres button:hover {
     background-color: #333;
     transform: scale(1.1);
 }
 
-/* Estilizado del buscador */
-.search-container {
-    margin-top: 15px;
-    position: relative;
-    width: 50%;
+/* Botón de favoritos */
+.fav-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
 }
 
+.fav-button:hover {
+    background-color: darkred;
+    transform: scale(1.1);
+}
+
+/* Mejora del buscador */
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 250px;
+    position: relative;
+}
+
+/* Ajuste del input del buscador */
 #search {
-    width: 90%;
-    padding: 14px;
-    font-size: 18px;
-    border-radius: 25px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
     border: none;
     outline: none;
-    background-color: #444444;
+    background-color: #2a2a2a;
     color: white;
-    padding-left: 50px;
+    text-align: center;
     transition: all 0.3s ease-in-out;
 }
 
-.search-container::before {
-    content: "🔍";
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: gray;
-    font-size: 20px;
+/* Mejora de la apariencia cuando se enfoca */
+#search:focus {
+    background-color: #444;
+    color: white;
+}
+
+/* Ajuste para que el input no quede pegado */
+.search-container input {
+    margin-right: 20px;
 }
 
 #search:focus {
@@ -109,7 +147,7 @@ header {
 
 /* Tamaño aumentado y estilizado */
 .categories img {
-    width: 160px; /* Tamaño más grande */
+    width: 350px; /* Tamaño más grande */
     height: auto;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -156,11 +194,13 @@ header {
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 100px; /* 🔥 Ajuste para evitar que el header lo tape */
 }
 
 .carousel {
     display: flex;
-    transition: transform 0.8s ease-in-out;
+    width: 100%;
+    position: relative;
 }
 
 .slide {
@@ -176,13 +216,7 @@ header {
 }
 
 /* 🔥 Cambio importante: Mover el carrusel en lugar de ocultar imágenes */
-.carousel-container {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-}
+
 
 .slide img {
     width: 100%;
@@ -234,4 +268,112 @@ header {
 .dot.active {
     background-color: white;
 }
+.dot.active {
+    background-color: white;
+}
+.movie {
+    position: relative;
+    overflow: hidden;
+    width: 220px;
+    height: 330px;
+}
+
+.movie-info {
+    position: absolute;
+    top: 0; /* Se ajusta para ocupar toda la película */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Ahora cubre completamente */
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie:hover .movie-info {
+    opacity: 1; /* Se muestra completamente */
+}
+
+
+.play-btn, .fav-btn {
+    display: block;
+    width: 90%;
+    margin: 5px auto;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.play-btn {
+    background: red;
+    color: white;
+}
+
+.fav-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.play-btn:hover, .fav-btn:hover {
+    opacity: 0.8;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 800px;
+    width: 90%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.logout-button {
+    background: linear-gradient(45deg, red, darkred);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+    background: darkred;
+    transform: scale(1.1);
+}
+
 

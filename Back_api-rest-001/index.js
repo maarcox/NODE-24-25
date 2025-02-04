@@ -5,7 +5,7 @@ const cors = require("cors");
 // INSTANCIAR LOS OBJETOS QUE NECESITAMOS
 const app = express();
 const port = 3000;
-
+const bcrypt = require("bcrypt");
 app.use(cors());
 app.use(express.json());
 // Configuración de la base de datos
@@ -26,6 +26,140 @@ const pool = new Pool({
       // Comprueba la documentación de AWS RDS para obtener los detalles exactos.
     },
   });
+
+  // Registro de usuario
+app.post("/register", async (req, res) => {
+    const { correo, contraseña } = req.body;
+
+    try {
+        // Verificar si el correo ya está registrado
+        const existingUser = await pool.query("SELECT * FROM usuarios WHERE correo = $1", [correo]);
+        if (existingUser.rows.length > 0) {
+            return res.status(400).json({ error: "El correo ya está registrado" });
+        }
+
+        // Hashear la contraseña
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(contraseña, saltRounds);
+
+        // Insertar usuario en la base de datos
+        await pool.query("INSERT INTO usuarios (correo, contraseña) VALUES ($1, $2)", [correo, hashedPassword]);
+
+        res.status(201).json({ mensaje: "Usuario registrado con éxito" });
+    } catch (error) {
+        console.error("Error en el registro:", error);
+        res.status(500).json({ error: "Error al registrar el usuario" });
+    }
+});
+
+// Inicio de sesión
+app.post("/login", async (req, res) => {
+    const { correo, contraseña } = req.body;
+
+    try {
+        const user = await pool.query("SELECT * FROM usuarios WHERE correo = $1", [correo]);
+
+        if (user.rows.length === 0) {
+            return res.status(400).json({ error: "Correo o contraseña incorrectos" });
+        }
+
+        const validPassword = await bcrypt.compare(contraseña, user.rows[0].contraseña);
+        if (!validPassword) {
+            return res.status(400).json({ error: "Correo o contraseña incorrectos" });
+        }
+
+        console.log("Usuario autenticado:", user.rows[0].id); // 🔥 Depuración
+        res.json({ mensaje: "Inicio de sesión exitoso", usuario_id: user.rows[0].id });  // ✅ Enviar usuario_id correctamente
+    } catch (error) {
+        console.error("Error en el login:", error);
+        res.status(500).json({ error: "Error al iniciar sesión" });
+    }
+});
+
+app.post("/favoritos", async (req, res) => {
+    const { usuario_id, pelicula_id } = req.body;
+
+    console.log("🚀 Recibiendo datos del frontend:", { usuario_id, pelicula_id }); // 🔥 Depuración
+
+    try {
+        if (!usuario_id || !pelicula_id) {
+            console.error("❌ Faltan datos: usuario_id o pelicula_id");
+            return res.status(400).json({ error: "Faltan datos: usuario_id o pelicula_id" });
+        }
+
+        // Verificar si ya está en favoritos
+        const existe = await pool.query(
+            "SELECT * FROM favoritos WHERE usuario_id = $1 AND pelicula_id = $2",
+            [usuario_id, pelicula_id]
+        );
+
+        if (existe.rows.length > 0) {
+            return res.status(400).json({ error: "Esta película ya está en favoritos" });
+        }
+
+        // Insertar en la base de datos
+        await pool.query(
+            "INSERT INTO favoritos (usuario_id, pelicula_id) VALUES ($1, $2)",
+            [usuario_id, pelicula_id]
+        );
+
+        res.json({ mensaje: "Película añadida a favoritos" });
+    } catch (error) {
+        console.error("🚨 Error en /favoritos:", error);
+        res.status(500).json({ error: "Error interno del servidor", detalle: error.message });
+    }
+});
+
+
+
+app.get("/favoritos/:usuario_id", async (req, res) => {
+    const { usuario_id } = req.params;
+
+    try {
+        const { rows } = await pool.query(
+            `SELECT p.id, p.titulo, p.imagen_url, p.trailer_url
+             FROM favoritos f
+             JOIN peliculas p ON f.pelicula_id = p.id
+             WHERE f.usuario_id = $1`,
+            [usuario_id]
+        );
+
+        res.json(rows);
+    } catch (error) {
+        console.error("Error al obtener favoritos:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+app.delete("/favoritos", async (req, res) => {
+    const { usuario_id, pelicula_id } = req.body;
+
+    console.log("🚀 Recibiendo datos para eliminar de favoritos:", req.body);
+
+    if (!usuario_id || !pelicula_id) {
+        return res.status(400).json({ error: "Faltan datos: usuario_id o pelicula_id" });
+    }
+
+    try {
+        const result = await pool.query(
+            "DELETE FROM favoritos WHERE usuario_id = $1 AND pelicula_id = $2",
+            [usuario_id, pelicula_id]
+        );
+
+        if (result.rowCount > 0) {
+            res.json({ mensaje: "Película eliminada de favoritos" });
+        } else {
+            res.status(404).json({ error: "Película no encontrada en favoritos" });
+        }
+    } catch (error) {
+        console.error("🚨 Error en /favoritos DELETE:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+
+
+
+
+
 // Endpoint para obtener las películas por género con el parámetro en la ruta
   app.get("/peliculas", async (req, res)=>{
     const {rows} = await pool.query(
@@ -34,6 +168,18 @@ const pool = new Pool({
     res.json(rows);
     // res.send("Bienvenido a mi API DISNEY");
 });
+
+app.get("/peliculas/trailers", async (req, res) => {
+    const {rows} = await pool.query(
+        "SELECT id, titulo, trailer_url FROM peliculas WHERE trailer_url IS NOT NULL;"
+    );
+    res.json(rows);
+    // res.send("Bienvenido a mi API DISNEY");
+  });
+  
+  
+  
+  
 
 
 app.get("/peliculas/genero/:genero", async (req, res) => {
@@ -108,6 +254,7 @@ app.get("/peliculas/categoria/:categoria", async (req, res) => {
     app.listen(port, () => {
         console.log(`Servidor corriendo en http://localhost:${port}`);
       });
+
 
     
       

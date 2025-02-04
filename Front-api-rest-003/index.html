@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <button id="home-btn">
+        <button id="home-btn" onclick="goHome()"> 
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Disney_Plus_logo.svg/589px-Disney_Plus_logo.svg.png" alt="Disney+" class="logo">
         </button>
         
@@ -19,17 +19,21 @@
                 <li><button onclick="filterByGenre('Acción')">Acción</button></li>
                 <li><button onclick="filterByGenre('Terror')">Terror</button></li>
                 <li><button onclick="filterByGenre('Fantasía')">Fantasía</button></li>
+                <li><button class="fav-button" onclick="showFavorites()">❤️ Favoritos</button></li>
             </ul>
         </nav>
         <div class="search-container">
-            <input type="text" id="search" placeholder=" Buscar películas..." onkeyup="searchMovies()">
+            <input type="text" id="search" placeholder="🔍 Buscar películas..." onkeyup="searchMovies()">
         </div>
+        <nav><button id="logout-btn" class="logout-button">Cerrar sesión</button></nav>
+        
+
     </header>
     
     <main>
         <div class="carousel-container">
             <div class="carousel">
-                <div class="slide active">
+                <div class="slide">
                     <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/11E1ECE75BB1330A7A10C1363F9FCBEFCA631C1B69092BBE820C7FD1F9CB333F/scale?width=1200&aspectRatio=1.78&format=webp" alt="Slide 1">
                 </div>
                 <div class="slide">
@@ -47,6 +51,8 @@
                 <span class="dot" onclick="currentSlide(2)"></span>
             </div>
         </div>
+        
+        
         
         <div class="categories">
             <button onclick="filterByCategory('Disney')"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/5EGT4P4UKRGAZPDR52FKJJW4YU.png" alt="Disney"></button>
@@ -74,4 +80,3 @@
     </script>
 </body>
 </html>
-
