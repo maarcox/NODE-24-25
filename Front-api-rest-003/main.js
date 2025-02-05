@@ -232,57 +232,55 @@ document.getElementById("home-btn").addEventListener("click", () => {
     fetchMovies(); // Carga todas las películas
 });
 
-displayMovies
 
-document.addEventListener("DOMContentLoaded", () => {
-    checkSession();
-    fetchMovies();
-    setupCarousel();
-});
 
 // ✅ Variables globales para el carrusel
 let slideIndex = 0;
-let slides, dots, carouselTimer;
+let slides, dots, carouselInterval;
 
-// ✅ Configurar carrusel después de cargar la página
+
+
 function setupCarousel() {
-    slides = document.querySelectorAll(".slide");
-    dots = document.querySelectorAll(".dot");
+    const carousel = document.querySelector(".carousel");
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+    let slideIndex = 0;
+    let interval;
 
-    if (slides.length > 0) {
-        showSlide(slideIndex);
-        carouselTimer = setInterval(() => moveSlide(1), 4000);
+    function showSlide(index) {
+        const offset = -index * 100; 
+        carousel.style.transform = `translateX(${offset}%)`;
+
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[index].classList.add("active");
     }
-}
 
-// ✅ Mueve el carrusel adelante o atrás
-function moveSlide(step) {
-    slideIndex += step;
-    if (slideIndex >= slides.length) slideIndex = 0;
-    if (slideIndex < 0) slideIndex = slides.length - 1;
+    function moveSlide(step) {
+        slideIndex += step;
+        if (slideIndex >= slides.length) slideIndex = 0;
+        if (slideIndex < 0) slideIndex = slides.length - 1;
+
+        showSlide(slideIndex);
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(interval);
+        interval = setInterval(() => moveSlide(1), 4000);
+    }
+
+    document.querySelector(".prev").addEventListener("click", () => moveSlide(-1));
+    document.querySelector(".next").addEventListener("click", () => moveSlide(1));
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            slideIndex = index;
+            showSlide(slideIndex);
+            resetTimer();
+        });
+    });
 
     showSlide(slideIndex);
+    interval = setInterval(() => moveSlide(1), 4000);
 }
-
-// ✅ Cambia a una imagen específica
-function currentSlide(index) {
-    slideIndex = index;
-    showSlide(slideIndex);
-}
-
-// ✅ Función para mostrar un slide específico
-function showSlide(index) {
-    slides.forEach(slide => slide.style.display = "none");
-    dots.forEach(dot => dot.classList.remove("active"));
-
-    slides[index].style.display = "block";
-    dots[index].classList.add("active");
-}
-
-// ✅ Resetear el temporizador cuando el usuario navega manualmente
-function resetTimer() {
-    clearInterval(carouselTimer);
-    carouselTimer = setInterval(() => moveSlide(1), 4000);
-}
-
 
