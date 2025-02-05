@@ -22,23 +22,29 @@
                 <li><button class="fav-button" onclick="showFavorites()">❤️ Favoritos</button></li>
             </ul>
         </nav>
+        
         <div class="search-container">
             <input type="text" id="search" placeholder="🔍 Buscar películas..." onkeyup="searchMovies()">
         </div>
-        <div class="profile-menu">
-            <img id="foto-perfil" src="default.png" alt="Perfil" />
-            <span id="nombre-usuario">Usuario</span>
-            <div class="profile-dropdown">
-                <button onclick="openProfile()">Ver perfil</button>
-                <button onclick="logout()">Cerrar sesión</button>
-            </div>
-        </div>
-        
-        
-        
-        
+    
+<!-- Contenedor del perfil -->
+<div class="profile-container" onclick="toggleProfileMenu()">
+    <div class="profile-menu">
+        <img id="foto-perfil" src="default.png" alt="Perfil">
+        <span id="nombre-usuario">marcos</span>
+    </div>
 
+    <!-- Popup desplegable -->
+    <div class="profile-dropdown" id="profile-popup">
+        <button onclick="openProfile()">👤 Ver perfil</button>
+        <div class="divider"></div>
+        <button onclick="logout()">🚪 Cerrar sesión</button>
+    </div>
+</div>
+
+    
     </header>
+    
     
     <main>
         <div class="carousel-container">

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     checkSession();
     fetchMovies();
     setupCarousel();
+    loadUserProfile();
 });
 function goHome() {
     window.location.href = "index.html"; // Redirige a la página principal
@@ -285,23 +286,34 @@ function setupCarousel() {
     interval = setInterval(() => moveSlide(1), 4000);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadUserProfile();
-});
 
 function loadUserProfile() {
     const usuario_id = localStorage.getItem("usuario_id");
 
-    if (!usuario_id) return;
+    if (!usuario_id) {
+        console.warn("⚠️ No hay usuario logueado.");
+        return;
+    }
 
     fetch(`http://localhost:3000/usuarios/${usuario_id}`)
         .then(response => response.json())
         .then(user => {
-            document.getElementById("profile-name").textContent = user.nombre;
-            document.getElementById("profile-pic").src = user.imagen_perfil || "default.png";
+            console.log("📥 Datos recibidos del backend:", user);
+
+            if (user && user.nombre && user.avatar_url) {
+                console.log("🖼️ URL de imagen antes de asignar:", user.avatar_url);
+
+                // Prueba a asignar una imagen de prueba para ver si el código funciona
+                document.getElementById("foto-perfil").src = user.avatar_url || "default.png";
+
+                document.getElementById("nombre-usuario").textContent = user.nombre;
+            } else {
+                console.warn("⚠️ Datos del usuario incompletos:", user);
+            }
         })
-        .catch(error => console.error("Error al cargar el perfil:", error));
+        .catch(error => console.error("❌ Error al cargar el perfil:", error));
 }
+
 
 function logout() {
     localStorage.removeItem("usuario_id");
@@ -311,5 +323,21 @@ function logout() {
 function openProfile() {
     window.location.href = "perfil.html";
 }
+
+// Función para alternar el menú de perfil
+function toggleProfileMenu() {
+    const profileContainer = document.querySelector(".profile-container");
+    profileContainer.classList.toggle("active");
+}
+
+// Cierra el menú si se hace clic fuera de él
+document.addEventListener("click", (event) => {
+    const profileContainer = document.querySelector(".profile-container");
+    if (!profileContainer.contains(event.target)) {
+        profileContainer.classList.remove("active");
+    }
+});
+
+
 
 

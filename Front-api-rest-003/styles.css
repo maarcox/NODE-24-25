@@ -20,6 +20,8 @@ header {
     z-index: 1000;
 }
 
+
+
 /* Logo en la esquina izquierda con efecto hover */
 #home-btn {
     background: none;
@@ -497,87 +499,101 @@ header {
 
 
 
-/* 🔹 Contenedor del perfil en el header */
-.profile-menu {
+/* 🔹 Contenedor del perfil */
+/* 🔹 Estilo del contenedor del perfil */
+.profile-container {
     position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* 🔹 Botón del perfil */
+.profile-menu {
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-radius: 25px;
     background: rgba(255, 255, 255, 0.1);
     transition: background 0.3s ease-in-out;
 }
 
-.profile-menu:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
 /* 🔹 Imagen de perfil */
-#profile-pic {
+#foto-perfil {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 8px;
-    transition: transform 0.3s ease-in-out;
 }
 
-.profile-menu:hover #profile-pic {
-    transform: scale(1.1);
-}
-
-/* 🔹 Nombre del usuario en el header */
-#profile-name {
+/* 🔹 Nombre de usuario */
+#nombre-usuario {
     color: white;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* 🔹 Contenedor del menú desplegable */
-.profile-dropdown {
-    display: none;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background: #222;
-    border-radius: 10px;
-    padding: 10px;
-    width: 180px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
-    z-index: 1000;
-}
-
-/* 🔹 Mostrar menú al hacer hover en el perfil */
-.profile-menu:hover .profile-dropdown {
-    display: block;
-}
-
-/* 🔹 Botones del menú desplegable */
-.profile-dropdown button {
-    width: 100%;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 5px;
-    transition: transform 0.3s ease-in-out;
 }
 
+/* 🔹 Menú desplegable */
+.profile-dropdown {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: #222326;
+    border-radius: 12px;
+    padding: 10px 0;
+    width: 220px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* 🔹 Mostrar el menú cuando está activo */
+.profile-container.active .profile-dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* 🔹 Botones del menú */
+.profile-dropdown button {
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* 🔹 Hover en botones */
 .profile-dropdown button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    background: rgba(255, 255, 255, 0.1);
+    transform: none; /* 🔥 Evita cualquier movimiento */
+}
+
+
+/* 🔹 Línea separadora */
+.profile-dropdown .divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 5px 0;
 }
 
 
 
 /* CSS DE PERFIL.hmtl */
 
-.profile-container:hover .profile-menu {
+.profile-container:hover  {
     display: block;
 }
 .profile-page {
