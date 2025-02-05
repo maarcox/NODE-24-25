@@ -25,7 +25,17 @@
         <div class="search-container">
             <input type="text" id="search" placeholder="🔍 Buscar películas..." onkeyup="searchMovies()">
         </div>
-        <nav><button id="logout-btn" class="logout-button">Cerrar sesión</button></nav>
+        <div class="profile-menu">
+            <img id="foto-perfil" src="default.png" alt="Perfil" />
+            <span id="nombre-usuario">Usuario</span>
+            <div class="profile-dropdown">
+                <button onclick="openProfile()">Ver perfil</button>
+                <button onclick="logout()">Cerrar sesión</button>
+            </div>
+        </div>
+        
+        
+        
         
 
     </header>

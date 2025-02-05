@@ -285,3 +285,31 @@ function setupCarousel() {
     interval = setInterval(() => moveSlide(1), 4000);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    loadUserProfile();
+});
+
+function loadUserProfile() {
+    const usuario_id = localStorage.getItem("usuario_id");
+
+    if (!usuario_id) return;
+
+    fetch(`http://localhost:3000/usuarios/${usuario_id}`)
+        .then(response => response.json())
+        .then(user => {
+            document.getElementById("profile-name").textContent = user.nombre;
+            document.getElementById("profile-pic").src = user.imagen_perfil || "default.png";
+        })
+        .catch(error => console.error("Error al cargar el perfil:", error));
+}
+
+function logout() {
+    localStorage.removeItem("usuario_id");
+    window.location.href = "login/login.html";
+}
+
+function openProfile() {
+    window.location.href = "perfil.html";
+}
+
+

@@ -253,10 +253,42 @@ app.get("/peliculas/categoria/:categoria", async (req, res) => {
         res.send('Has solicitado una lista de usuarios');
     }); 
 
-    app.get("/usuarios/:id", (req, res) =>{
-        const userId = req.params.id;
-        res.send(`El ID del usuario es: ${userId}`);
+    app.get("/usuarios/:id", async (req, res) => {
+        const { id } = req.params;
+    
+        try {
+            const { rows } = await pool.query(
+                "SELECT id, correo, nombre, avatar_url FROM usuarios WHERE id = $1",
+                [id]
+            );
+    
+            if (rows.length === 0) {
+                return res.status(404).json({ error: "Usuario no encontrado" });
+            }
+    
+            res.json(rows[0]);
+        } catch (error) {
+            console.error("🚨 Error al obtener usuario:", error);
+            res.status(500).json({ error: "Error interno del servidor" });
+        }
     });
+    app.put("/usuarios/:id", async (req, res) => {
+        const { id } = req.params;
+        const { nombre, avatar_url } = req.body;
+    
+        try {
+            await pool.query(
+                "UPDATE usuarios SET nombre = $1, avatar_url = $2 WHERE id = $3",
+                [nombre, avatar_url, id]
+            );
+    
+            res.json({ mensaje: "Perfil actualizado correctamente" });
+        } catch (error) {
+            console.error("🚨 Error al actualizar perfil:", error);
+            res.status(500).json({ error: "Error interno del servidor" });
+        }
+    });
+     
 
     
 

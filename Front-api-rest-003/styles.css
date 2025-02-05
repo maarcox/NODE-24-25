@@ -497,22 +497,111 @@ header {
 
 
 
-
-.logout-button {
-    background: linear-gradient(45deg, red, darkred);
-    color: white;
-    border: none;
-    padding: 10px 15px;
+/* 🔹 Contenedor del perfil en el header */
+.profile-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
+    padding: 5px 10px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease-in-out;
 }
 
-.logout-button:hover {
-    background: darkred;
+.profile-menu:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 🔹 Imagen de perfil */
+#profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-menu:hover #profile-pic {
     transform: scale(1.1);
 }
+
+/* 🔹 Nombre del usuario en el header */
+#profile-name {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 🔹 Contenedor del menú desplegable */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #222;
+    border-radius: 10px;
+    padding: 10px;
+    width: 180px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* 🔹 Mostrar menú al hacer hover en el perfil */
+.profile-menu:hover .profile-dropdown {
+    display: block;
+}
+
+/* 🔹 Botones del menú desplegable */
+.profile-dropdown button {
+    width: 100%;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-dropdown button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+
+
+
+/* CSS DE PERFIL.hmtl */
+
+.profile-container:hover .profile-menu {
+    display: block;
+}
+.profile-page {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.profile-page input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.profile-page button {
+    background: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
 
 
