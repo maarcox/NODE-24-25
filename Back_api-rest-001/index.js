@@ -117,19 +117,21 @@ app.get("/favoritos/:usuario_id", async (req, res) => {
 
     try {
         const { rows } = await pool.query(
-            `SELECT p.id, p.titulo, p.imagen_url, p.trailer_url
+            `SELECT p.id, p.titulo, p.anio, g.titulo AS genero, p.imagen_url, p.trailer_url
              FROM favoritos f
              JOIN peliculas p ON f.pelicula_id = p.id
+             JOIN genero g ON p.genero_id = g.id
              WHERE f.usuario_id = $1`,
             [usuario_id]
         );
 
         res.json(rows);
     } catch (error) {
-        console.error("Error al obtener favoritos:", error);
+        console.error("🚨 Error al obtener favoritos:", error);
         res.status(500).json({ error: "Error interno del servidor" });
     }
 });
+
 app.delete("/favoritos", async (req, res) => {
     const { usuario_id, pelicula_id } = req.body;
 
@@ -188,21 +190,17 @@ app.get("/peliculas/trailers", async (req, res) => {
   
   
   
-
-
-app.get("/peliculas/genero/:genero", async (req, res) => {
+  app.get("/peliculas/genero/:genero", async (req, res) => {
     const { genero } = req.params;
 
-
-    // 📌 Consulta SQL corregida
     let query = `
-        SELECT p.id, p.titulo, p.anio, g.titulo AS genero, p.imagen_url
+        SELECT p.id, p.titulo, p.anio, g.titulo AS genero, p.imagen_url, p.trailer_url
         FROM peliculas p
         JOIN genero g ON p.genero_id = g.id
         WHERE g.titulo ILIKE $1
     `;
 
-    const values = ['%' + genero + '%']; // 🔥 Forma correcta de pasar el parámetro en Node.js
+    const values = [`%${genero}%`];
 
     console.log("🛠 Consulta SQL:", query);
     console.log("📌 Valores:", values);
@@ -223,24 +221,28 @@ app.get("/peliculas/genero/:genero", async (req, res) => {
     }
 });
 
+
 // ✅ **Endpoint para obtener películas por categoría**
 app.get("/peliculas/categoria/:categoria", async (req, res) => {
     const { categoria } = req.params;
 
     try {
         const { rows } = await pool.query(
-            `SELECT p.id, p.titulo, p.anio, c.nombre AS categoria, p.imagen_url
+            `SELECT p.id, p.titulo, p.anio, c.nombre AS categoria, g.titulo AS genero, p.imagen_url, p.trailer_url
              FROM peliculas p
              JOIN categoria c ON p.categoria_id = c.id
+             JOIN genero g ON p.genero_id = g.id
              WHERE c.nombre ILIKE $1;`,
-            ['%' + categoria + '%']
+            [`%${categoria}%`]
         );
 
         res.json(rows);
     } catch (err) {
+        console.error("🚨 Error en la consulta SQL:", err);
         res.status(500).json({ error: "Error al obtener las películas por categoría." });
     }
 });
+
 
     
 

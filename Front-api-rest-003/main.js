@@ -43,6 +43,7 @@ function displayMovies(movies) {
 
         // Comprobar si la película está en favoritos
         let isFavorite = await checkIfFavorite(usuario_id, movie.id);
+        let genero = movie.genero ? movie.genero : "Desconocido"; 
 
         movieElement.innerHTML = `
             <img src="${movie.imagen_url}" alt="${movie.titulo}">
@@ -122,7 +123,7 @@ function playTrailer(trailerUrl, titulo, genero, anio, imagenUrl) {
     const modal = document.createElement("div");
     modal.classList.add("modal");
     modal.innerHTML = `
-        <div class="modal-content">
+         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="modal-body">
                 <div class="modal-left">
@@ -131,7 +132,7 @@ function playTrailer(trailerUrl, titulo, genero, anio, imagenUrl) {
                 <div class="modal-right">
                     <div class="modal-info">
                         <h2>${titulo}</h2>
-                        <p><strong>Género:</strong> ${genero || "Desconocido"}</p>
+                        <p><strong>Género:</strong> ${genero}</p>
                         <p><strong>Año:</strong> ${anio}</p>
                     </div>
                     <div class="video-container">
