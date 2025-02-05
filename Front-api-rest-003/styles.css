@@ -591,33 +591,7 @@ header {
 
 
 
-/* CSS DE PERFIL.hmtl */
 
-.profile-container:hover  {
-    display: block;
-}
-.profile-page {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.profile-page input {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 300px;
-    border-radius: 5px;
-}
-
-.profile-page button {
-    background: red;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 5px;
-}
 
 
 
