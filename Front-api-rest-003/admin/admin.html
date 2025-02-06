@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+    <button class="back-button" onclick="goHome()">🏠 Volver a Inicio</button>
+    <h2>Agregar Nueva Película</h2>
+    <form id="add-movie-form">
+        <input type="text" id="titulo" placeholder="Título" required>
+        <textarea id="descripcion" placeholder="Descripción" required></textarea>
+        <input type="number" id="anio" placeholder="Año" required>
+
+        <label for="genero">Género:</label>
+        <select id="genero">
+            <option value="">Selecciona un género</option>
+        </select>
+
+        <label for="categoria">Categoría:</label>
+        <select id="categoria">
+            <option value="">Selecciona una categoría</option>
+        </select>
+
+        <input type="url" id="imagen_url" placeholder="URL de la imagen" required>
+        <input type="url" id="trailer_url" placeholder="URL del tráiler" required>
+        <button id="add-movie-btn" type="submit">Agregar Película</button>
+    </form>
+    <div class="movies-list" id="movies-list"></div>
+</div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

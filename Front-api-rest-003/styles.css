@@ -589,6 +589,24 @@ header {
     margin: 5px 0;
 }
 
+#admin-panel-btn {
+    background: none;
+    border: none;
+    color: #ffcc00; /* Amarillo para destacar */
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+#admin-panel-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
 
 
 

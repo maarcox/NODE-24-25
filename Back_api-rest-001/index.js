@@ -244,6 +244,84 @@ app.get("/peliculas/categoria/:categoria", async (req, res) => {
 });
 
 
+app.post("/peliculas", async (req, res) => {
+    const { titulo, descripcion, anio, genero_id, categoria_id, imagen_url, trailer_url } = req.body;
+
+    console.log("📥 Datos recibidos:", req.body); // 🔥 Verifica qué llega al backend
+
+    if (!titulo || !descripcion || !anio || !genero_id || !categoria_id || !imagen_url || !trailer_url) {
+        console.log("🚨 Faltan datos en la solicitud.");
+        return res.status(400).json({ error: "Todos los campos son obligatorios" });
+    }
+
+    try {
+        const result = await pool.query(
+            "INSERT INTO peliculas (titulo, descripcion, anio, genero_id, categoria_id, imagen_url, trailer_url) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+            [titulo, descripcion, anio, genero_id, categoria_id, imagen_url, trailer_url]
+        );
+
+        console.log("✅ Película insertada:", result.rows[0]); // 🔥 Verifica si realmente se insertó
+
+        res.status(201).json({ mensaje: "Película agregada correctamente", pelicula: result.rows[0] });
+    } catch (error) {
+        console.error("❌ Error al agregar película:", error);
+        res.status(500).json({ error: "Error al agregar película" });
+    }
+});
+
+app.get("/peliculas/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        const { rows } = await pool.query("SELECT * FROM peliculas WHERE id = $1", [id]);
+        if (rows.length === 0) {
+            return res.status(404).json({ error: "Película no encontrada" });
+        }
+        res.json(rows[0]);
+    } catch (error) {
+        console.error("Error al obtener la película:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+app.delete("/peliculas/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await pool.query("DELETE FROM peliculas WHERE id = $1", [id]);
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: "Película no encontrada" });
+        }
+
+        res.json({ mensaje: "Película eliminada correctamente" });
+    } catch (error) {
+        console.error("Error al eliminar la película:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+
+
+
+// Obtener todos los géneros disponibles
+app.get("/generos", async (req, res) => {
+    try {
+        const { rows } = await pool.query("SELECT id, titulo FROM genero");
+        res.json(rows);
+    } catch (error) {
+        console.error("❌ Error al obtener géneros:", error);
+        res.status(500).json({ error: "Error al obtener géneros" });
+    }
+});
+
+// Obtener todas las categorías disponibles
+app.get("/categorias", async (req, res) => {
+    try {
+        const { rows } = await pool.query("SELECT id, nombre FROM categoria");
+        res.json(rows);
+    } catch (error) {
+        console.error("❌ Error al obtener categorías:", error);
+        res.status(500).json({ error: "Error al obtener categorías" });
+    }
+});
+
     
 
     // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
@@ -258,7 +336,7 @@ app.get("/peliculas/categoria/:categoria", async (req, res) => {
     
         try {
             const { rows } = await pool.query(
-                "SELECT id, correo, nombre, avatar_url FROM usuarios WHERE id = $1",
+                "SELECT id, correo, nombre, avatar_url, rol FROM usuarios WHERE id = $1",
                 [id]
             );
     
@@ -266,12 +344,13 @@ app.get("/peliculas/categoria/:categoria", async (req, res) => {
                 return res.status(404).json({ error: "Usuario no encontrado" });
             }
     
-            res.json(rows[0]);
+            res.json(rows[0]); // 🔥 Ahora devuelve el campo `rol`
         } catch (error) {
             console.error("🚨 Error al obtener usuario:", error);
             res.status(500).json({ error: "Error interno del servidor" });
         }
     });
+    
     app.put("/usuarios/:id", async (req, res) => {
         const { id } = req.params;
         const { nombre, avatar_url } = req.body;

@@ -301,18 +301,20 @@ function loadUserProfile() {
             console.log("📥 Datos recibidos del backend:", user);
 
             if (user && user.nombre && user.avatar_url) {
-                console.log("🖼️ URL de imagen antes de asignar:", user.avatar_url);
-
-                // Prueba a asignar una imagen de prueba para ver si el código funciona
                 document.getElementById("foto-perfil").src = user.avatar_url || "default.png";
-
                 document.getElementById("nombre-usuario").textContent = user.nombre;
+
+                // 🔹 Verificar si el usuario es administrador
+                if (user.rol === "admin") {
+                    document.getElementById("admin-btn").style.display = "block";
+                }
             } else {
                 console.warn("⚠️ Datos del usuario incompletos:", user);
             }
         })
         .catch(error => console.error("❌ Error al cargar el perfil:", error));
 }
+
 
 
 function logout() {
@@ -338,6 +340,12 @@ document.addEventListener("click", (event) => {
     }
 });
 
+
+
+
+function openAdminPanel() {
+    window.location.href = "admin/admin.html"; 
+}
 
 
 

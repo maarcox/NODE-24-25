@@ -1,0 +1,7 @@
+id: PK integer
+correo: carácter varying
+contraseña: text
+fecha_registro: timestamp without time zone
+nombre: carácter varying
+avatar_url: text
+rol: carácter varying

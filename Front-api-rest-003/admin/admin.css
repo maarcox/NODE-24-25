@@ -1,0 +1,153 @@
+/* 🌟 Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #000428, #004e92); /* Azul oscuro a azul vibrante */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 🔹 Contenedor principal */
+.admin-container {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.8);
+    text-align: center;
+    width: 420px;
+}
+
+/* 🎬 Título principal */
+h2 {
+    color: #00c8ff;
+    margin-bottom: 20px;
+}
+
+/* 📑 Campos del formulario */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: #1e1e1e;
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* 📌 Mejorar la apariencia cuando el usuario interactúa */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    background: #292929;
+    box-shadow: 0 0 8px rgba(0, 200, 255, 0.7);
+}
+
+/* 🎥 Botón de acción */
+button {
+    background: linear-gradient(135deg, #00c8ff, #0066ff);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🎬 Efecto hover en el botón */
+button:hover {
+    background: linear-gradient(135deg, #0090cc, #0040cc);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(0, 200, 255, 0.6);
+}
+
+/* 🎬 Contenedor de la lista de películas */
+.movies-list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* 🎥 Estilo de cada película en la lista */
+.movie-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* 📸 Imagen de la película */
+.movie-item img {
+    width: 60px;
+    height: 90px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* 🎬 Información de la película */
+.movie-item h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #00c8ff;
+    text-align: left;
+}
+
+/* 📌 Botones de editar y eliminar */
+.movie-item button {
+    background: #ff4b4b;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔧 Botón de edición */
+.movie-item button:first-of-type {
+    background: #ffcc00;
+    color: black;
+}
+
+/* 🗑 Botón de eliminación */
+.movie-item button:last-of-type {
+    background: #ff4b4b;
+    color: white;
+}
+
+/* 🔥 Hover en los botones */
+.movie-item button:hover {
+    opacity: 0.8;
+}
+/* 🔙 Botón de Volver a Inicio */
+.back-button {
+    background: linear-gradient(135deg, #ffcc00, #ff9900);
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 15px;
+}
+
+/* 🚀 Efecto hover */
+.back-button:hover {
+    background: linear-gradient(135deg, #ffaa00, #ff7700);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(255, 200, 0, 0.6);
+}
