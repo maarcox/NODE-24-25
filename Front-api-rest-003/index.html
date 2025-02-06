@@ -74,11 +74,35 @@
         
         
         <div class="categories">
-            <button onclick="filterByCategory('Disney')"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/5EGT4P4UKRGAZPDR52FKJJW4YU.png" alt="Disney"></button>
-            <button onclick="filterByCategory('Pixar')"><img src="https://cdn.textstudio.com/output/preset/preview/medium/5/7/2/1/1275_cfe47.png" alt="Pixar"></button>
-            <button onclick="filterByCategory('Star Wars')"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png" alt="Star Wars"></button>
-            <button onclick="filterByCategory('Marvel')"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" alt="Marvel"></button>
+            <button class="category-btn" onclick="filterByCategory('Disney')">
+                <div class="image-wrapper">
+                    <img class="static-img" src="https://tec.com.pe/wp-content/uploads/2021/09/disney-plus-disney-disney-logo-2437503-scaled.jpg" alt="Disney">
+                    <img class="gif-img" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExamk1bDhkZTRwM2t3dnNxaWU2emI5dm5yZXV4ZG9qY3R5c3BweTFyaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QxwnBM8MkgAdqqng5S/giphy.gif" alt="Disney">
+                </div>
+            </button>
+        
+            <button class="category-btn" onclick="filterByCategory('Pixar')">
+                <div class="image-wrapper">
+                    <img class="static-img" src="https://cdn.textstudio.com/output/preset/preview/medium/5/7/2/1/1275_cfe47.png" alt="Pixar">
+                    <img class="gif-img" src="https://media.giphy.com/media/4v1X0rfUjx7XO/giphy.gif?cid=790b7611um5iyug9fpmlgtta2g01zk9dcmku2x6yth8uviio&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Pixar">
+                </div>
+            </button>
+        
+            <button class="category-btn" onclick="filterByCategory('Star Wars')">
+                <div class="image-wrapper">
+                    <img class="static-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png" alt="Star Wars">
+                    <img class="gif-img" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Z0OXBudWlnc3B6c3dxb3NyYTE0ejdja2tlZ3l5dmMxYmcxa2ZpNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l1uguGf2RVIsTXNDO/giphy.gif" alt="Star Wars">
+                </div>
+            </button>
+        
+            <button class="category-btn" onclick="filterByCategory('Marvel')">
+                <div class="image-wrapper">
+                    <img class="static-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" alt="Marvel">
+                    <img class="gif-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGVicHN2bnY1ejRjdWpueDFrYmt4Zmh6bnplaGNsaWs2NHB1eGF1OSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/vBjLa5DQwwxbi/giphy.gif" alt="Marvel">
+                </div>
+            </button>
         </div>
+        
         <div id="movies-container"></div>
     </main>
     

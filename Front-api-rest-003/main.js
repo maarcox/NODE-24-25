@@ -29,7 +29,7 @@ function fetchMovies() {
     fetch("http://localhost:3000/peliculas")
         .then(response => response.json())
         .then(data => {
-            allMovies = data; // Guardar todas las películas en una variable global
+            allMovies = [...new Map(data.map(movie => [movie.id, movie])).values()]; // 🔥 Evita duplicados
             displayMovies(allMovies);
         })
         .catch(error => console.error("Error al obtener las películas:", error));
@@ -38,12 +38,11 @@ function fetchMovies() {
 function displayMovies(movies) {
     const container = document.getElementById("movies-container");
     container.innerHTML = "";
-    let uniqueMovies = new Set(); // 🔥 Evita duplicados
+
     const usuario_id = localStorage.getItem("usuario_id");
 
     movies.forEach(async movie => {
-        if (!uniqueMovies.has(movie.id)) { // Verifica que la película no esté duplicada
-            uniqueMovies.add(movie.id);
+      
         const movieElement = document.createElement("div");
         movieElement.classList.add("movie");
 
@@ -68,7 +67,7 @@ function displayMovies(movies) {
         `;
 
         container.appendChild(movieElement);
-        }
+        
     });
 }
 
@@ -214,6 +213,7 @@ function showFavorites() {
         container.appendChild(movieElement);
         
 
+// 🔍 **Buscador de películas mejorado**
 function searchMovies() {
     const query = document.getElementById("search").value;
     fetch(`http://localhost:3000/peliculas`)
@@ -223,6 +223,11 @@ function searchMovies() {
             displayMovies(filteredMovies);
         });
 }
+// 🔄 **Evita que el buscador se rompa al presionar teclas rápidamente**
+document.getElementById("search").addEventListener("input", () => {
+    clearTimeout(window.searchTimeout);
+    window.searchTimeout = setTimeout(searchMovies, 300);
+});
 
 function filterByGenre(genre) {
     fetch(`http://localhost:3000/peliculas/genero/${genre}`)
@@ -355,3 +360,16 @@ function openAdminPanel() {
 
 
 
+document.querySelectorAll('.category-btn').forEach((button) => {
+    const img = button.querySelector("img");
+    const staticSrc = button.getAttribute("data-static");
+    const gifSrc = button.getAttribute("data-gif");
+
+    button.addEventListener("mouseover", () => {
+        img.src = gifSrc;
+    });
+
+    button.addEventListener("mouseout", () => {
+        img.src = staticSrc;
+    });
+});
