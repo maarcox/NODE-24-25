@@ -28,17 +28,22 @@ document.getElementById("logout-btn").addEventListener("click", () => {
 function fetchMovies() {
     fetch("http://localhost:3000/peliculas")
         .then(response => response.json())
-        .then(data => displayMovies(data))
+        .then(data => {
+            allMovies = data; // Guardar todas las películas en una variable global
+            displayMovies(allMovies);
+        })
         .catch(error => console.error("Error al obtener las películas:", error));
 }
 
 function displayMovies(movies) {
     const container = document.getElementById("movies-container");
     container.innerHTML = "";
-
+    let uniqueMovies = new Set(); // 🔥 Evita duplicados
     const usuario_id = localStorage.getItem("usuario_id");
 
     movies.forEach(async movie => {
+        if (!uniqueMovies.has(movie.id)) { // Verifica que la película no esté duplicada
+            uniqueMovies.add(movie.id);
         const movieElement = document.createElement("div");
         movieElement.classList.add("movie");
 
@@ -63,6 +68,7 @@ function displayMovies(movies) {
         `;
 
         container.appendChild(movieElement);
+        }
     });
 }
 

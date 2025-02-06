@@ -1,45 +1,61 @@
-/* 🌟 Estilos generales */
+/* 🌟 Estilos Generales */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #000428, #004e92); /* Azul oscuro a azul vibrante */
+    background: linear-gradient(135deg, #000428, #004e92);
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 20px;
 }
 
-/* 🔹 Contenedor principal */
-.admin-container {
-    background: rgba(0, 0, 0, 0.9);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 200, 255, 0.8);
-    text-align: center;
-    width: 420px;
-}
-
-/* 🎬 Título principal */
-h2 {
-    color: #00c8ff;
+/* 🔹 Encabezado */
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
     margin-bottom: 20px;
 }
 
-/* 📑 Campos del formulario */
+/* 📌 Logo de Disney */
+.logo {
+    width: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* 🔹 Contenedor del Panel */
+.admin-container {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.8);
+    text-align: center;
+    width: 400px;
+    margin: auto;
+}
+
+/* 🎬 Título */
+h1, h2 {
+    color: #00c8ff;
+    text-align: center;
+}
+
+/* 📑 Formularios */
 input, textarea, select {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
+    padding: 10px;
+    margin: 8px 0;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     background: #1e1e1e;
     color: white;
     font-size: 14px;
-    transition: 0.3s;
 }
 
-/* 📌 Mejorar la apariencia cuando el usuario interactúa */
 input:focus, textarea:focus, select:focus {
     outline: none;
     background: #292929;
@@ -56,98 +72,69 @@ button {
     font-size: 16px;
     font-weight: bold;
     width: 100%;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-}
-
-/* 🎬 Efecto hover en el botón */
-button:hover {
-    background: linear-gradient(135deg, #0090cc, #0040cc);
-    transform: scale(1.05);
-    box-shadow: 0px 0px 10px rgba(0, 200, 255, 0.6);
-}
-
-/* 🎬 Contenedor de la lista de películas */
-.movies-list {
-    margin-top: 20px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding-right: 10px;
-}
-
-/* 🎥 Estilo de cada película en la lista */
-.movie-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-/* 📸 Imagen de la película */
-.movie-item img {
-    width: 60px;
-    height: 90px;
-    border-radius: 5px;
-    object-fit: cover;
-}
-
-/* 🎬 Información de la película */
-.movie-item h4 {
-    margin: 0;
-    font-size: 16px;
-    color: #00c8ff;
-    text-align: left;
-}
-
-/* 📌 Botones de editar y eliminar */
-.movie-item button {
-    background: #ff4b4b;
-    border: none;
-    padding: 8px 12px;
-    font-size: 14px;
-    cursor: pointer;
     border-radius: 6px;
     transition: all 0.3s ease-in-out;
 }
 
-/* 🔧 Botón de edición */
-.movie-item button:first-of-type {
+button:hover {
+    background: linear-gradient(135deg, #0090cc, #0040cc);
+    transform: scale(1.05);
+}
+
+/* 📌 Contenedor de Películas */
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* 🎥 Estilo de cada película */
+.movie-item {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie-item:hover {
+    transform: scale(1.05);
+}
+
+/* 📸 Imagen de la Película */
+.movie-item img {
+    width: 100%;
+    height: 250px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* 🎬 Información */
+.movie-item h4 {
+    font-size: 16px;
+    color: #00c8ff;
+    margin: 10px 0;
+}
+
+/* 📌 Botones */
+.movie-item button {
+    display: block;
+    margin: 5px auto;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.edit-btn {
     background: #ffcc00;
     color: black;
 }
 
-/* 🗑 Botón de eliminación */
-.movie-item button:last-of-type {
+.delete-btn {
     background: #ff4b4b;
     color: white;
-}
-
-/* 🔥 Hover en los botones */
-.movie-item button:hover {
-    opacity: 0.8;
-}
-/* 🔙 Botón de Volver a Inicio */
-.back-button {
-    background: linear-gradient(135deg, #ffcc00, #ff9900);
-    color: black;
-    font-weight: bold;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    border-radius: 8px;
-    transition: 0.3s ease-in-out;
-    margin-bottom: 15px;
-}
-
-/* 🚀 Efecto hover */
-.back-button:hover {
-    background: linear-gradient(135deg, #ffaa00, #ff7700);
-    transform: scale(1.05);
-    box-shadow: 0px 0px 10px rgba(255, 200, 0, 0.6);
 }

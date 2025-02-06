@@ -131,8 +131,8 @@ async function loadMovies() {
     try {
         const response = await fetch("http://localhost:3000/peliculas");
         const movies = await response.json();
-        const moviesList = document.getElementById("movies-list");
-        moviesList.innerHTML = "";
+        const moviesContainer = document.getElementById("movies-container");
+        moviesContainer.innerHTML = "";
 
         movies.forEach(movie => {
             const movieItem = document.createElement("div");
@@ -140,11 +140,10 @@ async function loadMovies() {
             movieItem.innerHTML = `
                 <img src="${movie.imagen_url}" alt="${movie.titulo}">
                 <h4>${movie.titulo} (${movie.anio})</h4>
-
-                <button onclick="editMovie(${movie.id})">✏️ Editar</button>
-                <button onclick="deleteMovie(${movie.id})">🗑 Eliminar</button>
+                <button class="edit-btn" onclick="editMovie(${movie.id})">✏️ Editar</button>
+                <button class="delete-btn" onclick="deleteMovie(${movie.id})">🗑 Eliminar</button>
             `;
-            moviesList.appendChild(movieItem);
+            moviesContainer.appendChild(movieItem);
         });
     } catch (error) {
         console.error("Error al cargar películas:", error);

@@ -7,30 +7,39 @@
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
+    <!-- 🔵 Logo de Disney para volver a inicio -->
+    <header class="admin-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Disney_Plus_logo.svg/589px-Disney_Plus_logo.svg.png" alt="Disney+" class="logo" onclick="goHome()">
+        <h1>Panel de Administración</h1>
+    </header>
+
+    <!-- 🎬 Contenedor de administración -->
     <div class="admin-container">
-    <button class="back-button" onclick="goHome()">🏠 Volver a Inicio</button>
-    <h2>Agregar Nueva Película</h2>
-    <form id="add-movie-form">
-        <input type="text" id="titulo" placeholder="Título" required>
-        <textarea id="descripcion" placeholder="Descripción" required></textarea>
-        <input type="number" id="anio" placeholder="Año" required>
+        <h2>Agregar Nueva Película</h2>
+        <form id="add-movie-form">
+            <input type="text" id="titulo" placeholder="Título" required>
+            <textarea id="descripcion" placeholder="Descripción" required></textarea>
+            <input type="number" id="anio" placeholder="Año" required>
 
-        <label for="genero">Género:</label>
-        <select id="genero">
-            <option value="">Selecciona un género</option>
-        </select>
+            <label for="genero">Género:</label>
+            <select id="genero">
+                <option value="">Selecciona un género</option>
+            </select>
 
-        <label for="categoria">Categoría:</label>
-        <select id="categoria">
-            <option value="">Selecciona una categoría</option>
-        </select>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria">
+                <option value="">Selecciona una categoría</option>
+            </select>
 
-        <input type="url" id="imagen_url" placeholder="URL de la imagen" required>
-        <input type="url" id="trailer_url" placeholder="URL del tráiler" required>
-        <button id="add-movie-btn" type="submit">Agregar Película</button>
-    </form>
-    <div class="movies-list" id="movies-list"></div>
-</div>
+            <input type="url" id="imagen_url" placeholder="URL de la imagen" required>
+            <input type="url" id="trailer_url" placeholder="URL del tráiler" required>
+            
+            <button id="add-movie-btn" type="submit">Agregar Película</button>
+        </form>
+    </div>
+
+    <!-- 📌 Contenedor de películas (fuera del panel de admin) -->
+    <div class="movies-container" id="movies-container"></div>
 
     <script src="admin.js"></script>
 </body>
