@@ -236,13 +236,14 @@ header {
 
 .carousel-container {
     position: relative;
-    width: 100%;
-    max-width: 1200px;
+    width: 100%;  /* 🔥 Lo hacemos más largo (todo el ancho) */
+    max-width: 1400px;  /* 🔥 Aumenta el ancho máximo */
+    height: 320px;  /* 🔥 Reduce la altura */
     margin: auto;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 25px;  /* 🔥 Bordes redondeados */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    margin-top: 100px; /* 🔥 Ajuste para evitar que el header lo tape */
+    margin-top: 80px; /* 🔥 Ajuste para que no quede pegado al header */
 }
 
 .carousel {
@@ -250,6 +251,7 @@ header {
     width: 100%;
     position: relative;
 }
+
 
 .slide {
     flex: 0 0 100%;
@@ -362,7 +364,7 @@ header {
 }
 
 .play-btn {
-    background: red;
+    background: rgb(0, 225, 255);
     color: white;
 }
 
@@ -425,18 +427,18 @@ header {
     font-weight: bold;
     cursor: pointer;
     color: white;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(200, 0, 0, 0.9));
+    background: linear-gradient(135deg, rgba(26, 216, 230, 0.8), rgba(65, 91, 206, 0.9));
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px rgba(7, 58, 99, 0.5);
 }
 
 /* Efecto hover con animación */
 .close-btn:hover {
-    background: linear-gradient(135deg, rgba(255, 50, 50, 1), rgba(200, 0, 0, 1));
+    background: linear-gradient(135deg, rgb(69, 164, 202), rgb(55, 162, 189));
     transform: scale(1.15) rotate(10deg);
-    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+    box-shadow: 0px 0px 15px rgba(0, 255, 179, 0.8);
 }
 
 /* Animación al hacer clic */

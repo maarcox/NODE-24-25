@@ -142,7 +142,7 @@ function playTrailer(trailerUrl, titulo, genero, anio, imagenUrl) {
                         <p><strong>Año:</strong> ${anio}</p>
                     </div>
                     <div class="video-container">
-                        <iframe src="${trailerUrl}" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="${trailerUrl}" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
